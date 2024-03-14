@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-final countProvider = Provider<int>((ref) => 0);
+final countProvider = StateProvider<int>((ref) => 0);
 
 void main() {
   runApp(const ProviderScope(child: myAPP()));
@@ -12,34 +14,25 @@ class myAPP extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: homePage(),
     );
   }
 }
 
-class homePage extends ConsumerWidget {
+class homePage extends StatefulWidget {
   const homePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    int count = ref.watch(countProvider);
+  State<homePage> createState() => _homePageState();
+}
+
+class _homePageState extends State<homePage> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text("home page"),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              "you have click$count",
-              style: const TextStyle(fontSize: (20), color: Colors.black),
-            )
-          ],
-        ),
-      ),
+      backgroundColor: Colors.purple,
     );
   }
 }
