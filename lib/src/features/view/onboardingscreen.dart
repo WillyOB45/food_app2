@@ -29,7 +29,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             children: [
               Text(
                 "The fastest food",
-                style: GoogleFonts.spaceMono(color: Colors.black),
+                // style: GoogleFonts.spaceMono(color: Colors.black),
               )
             ],
           )
