@@ -2,19 +2,19 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:food_app2/src/features/view/homemain.dart';
-import 'package:food_app2/src/features/view/registerpage.dart';
+import 'package:food_app2/src/features/view/sigin.dart';
 import 'package:food_app2/src/utilities/loadingwidget.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterPageState extends State<RegisterPage> {
   //password visiblity
   bool _isvisible = true;
 
@@ -36,7 +36,7 @@ class _SignInState extends State<SignIn> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 100,
+              height: 90,
             ),
 
             // image logo
@@ -55,9 +55,6 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 1,
-            ),
 
             // title and sub-title section
             Padding(
@@ -68,17 +65,49 @@ class _SignInState extends State<SignIn> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Welcome back,Sign In to proceed",
+                      "Register to continue...",
                       style: GoogleFonts.spaceMono(
                           color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 6,
                     ),
 
                     // user sigin
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.symmetric(horizontal: 10),
+                      child: SizedBox(
+                        height: 50,
+                        width: 400,
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            hintText: "Enter your name",
+                            prefixIcon: const Icon(
+                              Icons.security,
+                              color: Color(0xffeb3254),
+                            ),
+                            enabledBorder: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                              Radius.circular(5),
+                            )),
+                            focusedBorder: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            )),
+                            fillColor: Colors.grey.shade300,
+                            filled: true,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+
+                    // email input
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.symmetric(horizontal: 10),
@@ -109,6 +138,8 @@ class _SignInState extends State<SignIn> {
                     const SizedBox(
                       height: 5,
                     ),
+
+                    // password input
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.symmetric(horizontal: 10),
@@ -133,7 +164,7 @@ class _SignInState extends State<SignIn> {
                                         Icons.visibility,
                                         color: Color(0xffeb3254),
                                       )),
-                            hintText: "Enter your passwod",
+                            hintText: "Enter your passwood",
                             prefixIcon: const Icon(
                               Icons.security,
                               color: Color(0xffeb3254),
@@ -160,23 +191,6 @@ class _SignInState extends State<SignIn> {
               height: 10,
             ),
 
-            // forget pasword
-            Container(
-              alignment: Alignment.centerRight,
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Text(
-                "Forget password?",
-                textAlign: TextAlign.end,
-                style: GoogleFonts.spaceMono(
-                    color: const Color(0xffeb3254),
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-
             // sigin button
 
             GestureDetector(
@@ -197,7 +211,7 @@ class _SignInState extends State<SignIn> {
                         color: const Color(0xffeb3254),
                       ),
                       child: Text(
-                        "Sign In",
+                        "Click to sign up",
                         style: GoogleFonts.spaceMono(
                             color: Colors.white,
                             fontSize: 20,
@@ -210,7 +224,7 @@ class _SignInState extends State<SignIn> {
               height: 10,
             ),
 
-            // don't have an account
+            // Already have an account?
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -226,13 +240,13 @@ class _SignInState extends State<SignIn> {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.to(const RegisterPage(),
+                    Get.to(const SignIn(),
                         transition: Transition.fade,
                         duration: const Duration(seconds: 1));
                   },
                   splashColor: const Color(0xffeb3254),
                   child: Text(
-                    "Sign Up",
+                    "Sign In",
                     style: GoogleFonts.spaceMono(
                         color: const Color(0xffeb3254),
                         fontSize: 15,

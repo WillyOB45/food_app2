@@ -61,7 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     "Delivery App In The Town",
                     style: GoogleFonts.spaceMono(
                         color: Colors.black,
-                        fontSize: 27,
+                        fontSize: 23,
                         fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
@@ -133,7 +133,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               Text(
                 "Sign Up",
-                style: GoogleFonts.lato(
+                style: GoogleFonts.spaceMono(
                     color: const Color(0xffeb3254),
                     fontSize: 15,
                     fontWeight: FontWeight.normal),
