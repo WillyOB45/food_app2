@@ -86,7 +86,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 60,
           ),
 
           GestureDetector(
@@ -104,7 +104,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 color: const Color(0xffeb3254),
               ),
               child: Text(
-                "Sign In",
+                "Get Started",
                 style: GoogleFonts.spaceMono(
                     color: Colors.white,
                     fontSize: 20,
@@ -116,30 +116,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           const SizedBox(
             height: 10,
           ),
-
-          // don't have an account
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Don't have an account?",
-                style: GoogleFonts.lato(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal),
-              ),
-              const SizedBox(
-                width: 3,
-              ),
-              Text(
-                "Sign Up",
-                style: GoogleFonts.spaceMono(
-                    color: const Color(0xffeb3254),
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal),
-              ),
-            ],
-          )
         ],
       ),
     );

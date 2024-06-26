@@ -229,7 +229,7 @@ class _RegisterPageState extends State<RegisterPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don't have an account?",
+                  "Already have an account?",
                   style: GoogleFonts.lato(
                       color: Colors.black,
                       fontSize: 15,

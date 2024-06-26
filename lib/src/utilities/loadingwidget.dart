@@ -7,8 +7,7 @@ Widget loadingWidget() {
       child: Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      LoadingAnimationWidget.staggeredDotsWave(
-          color: const Color(0xffeb3254), size: 25),
+      LoadingAnimationWidget.inkDrop(color: const Color(0xffeb3254), size: 25),
       const SizedBox(
         width: 10,
       ),
