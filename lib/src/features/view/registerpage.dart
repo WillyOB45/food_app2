@@ -23,7 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void goToNextPage() async {
     await Future.delayed(const Duration(seconds: 20));
-    Get.to(const HomePage());
+    Get.to(const HomePageMain());
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app2/src/utilities/settingstiles.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Settings extends StatefulWidget {
@@ -64,7 +65,7 @@ class _SettingsState extends State<Settings> {
                   height: 90,
                   width: 90,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.grey,
                   ),
@@ -131,7 +132,7 @@ class _SettingsState extends State<Settings> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Color(0xffeb3254)),
+                      color: const Color(0xffeb3254)),
                   child: Text(
                     "Upgrade to PRO",
                     style: GoogleFonts.lato(
@@ -142,10 +143,42 @@ class _SettingsState extends State<Settings> {
                 ),
 
                 const SizedBox(
-                  height: 5,
+                  height: 20,
                 ),
 
                 // settings details
+                settingTiles(
+                    leadingIcon: Icons.security,
+                    titleText: "Privacy",
+                    trailingIcon: Icons.arrow_forward),
+                const SizedBox(
+                  height: 10,
+                ),
+                settingTiles(
+                    leadingIcon: Icons.receipt,
+                    titleText: "Purchase history",
+                    trailingIcon: Icons.arrow_forward),
+                const SizedBox(
+                  height: 10,
+                ),
+                settingTiles(
+                    leadingIcon: Icons.question_mark,
+                    titleText: "Help and support",
+                    trailingIcon: Icons.arrow_forward),
+                const SizedBox(
+                  height: 10,
+                ),
+                settingTiles(
+                    leadingIcon: Icons.group_add,
+                    titleText: "Invite a friend",
+                    trailingIcon: Icons.arrow_forward),
+                const SizedBox(
+                  height: 10,
+                ),
+                settingTiles(
+                    leadingIcon: Icons.logout,
+                    titleText: "Log out",
+                    trailingIcon: Icons.arrow_forward),
               ],
             ),
           ],

@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:food_app2/src/features/view/homepage.dart';
 import 'package:food_app2/src/features/view/settings.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePageMain extends StatefulWidget {
+  const HomePageMain({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePageMain> createState() => _HomePageMainState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageMainState extends State<HomePageMain> {
   int _currentIndex = 0;
 
   final List _screens = [
-    Container(
-      color: Colors.amber,
-    ),
+    const HomePage(),
     Container(
       color: Colors.orange,
     ),
