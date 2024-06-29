@@ -211,7 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         color: const Color(0xffeb3254),
                       ),
                       child: Text(
-                        "Click to sign up",
+                        "click to register",
                         style: GoogleFonts.spaceMono(
                             color: Colors.white,
                             fontSize: 20,
