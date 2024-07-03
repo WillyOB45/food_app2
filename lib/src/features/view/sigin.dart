@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:food_app2/src/features/view/homemain.dart';
 import 'package:food_app2/src/features/view/registerpage.dart';
@@ -21,27 +19,30 @@ class _SignInState extends State<SignIn> {
   // laoding state
   bool _isLoading = false;
 
-  void goToNextPage() async {
-    await Future.delayed(const Duration(seconds: 20));
-    Get.to(const HomePageMain());
-  }
-
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
+    void vaildate() async {
+      if (formkey.currentState!.validate()) {
+        await Future.delayed(const Duration(seconds: 20));
+        Get.to(const HomePageMain());
+      }
+    }
+
     return Scaffold(
-      body: SizedBox(
-        height: screenHeight,
-        width: screenWidth * 0.25,
-        child: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          onChanged: () => vaildate(),
+          key: formkey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 100,
+                height: 50,
               ),
 
               // image logo
@@ -87,73 +88,79 @@ class _SignInState extends State<SignIn> {
                       Padding(
                         padding: const EdgeInsetsDirectional.symmetric(
                             horizontal: 10),
-                        child: SizedBox(
-                          height: 50,
-                          width: 400,
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Enter your email",
-                              prefixIcon: const Icon(
-                                Icons.person,
-                                color: Color(0xffeb3254),
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                Radius.circular(5),
-                              )),
-                              focusedBorder: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              )),
-                              fillColor: Colors.grey.shade300,
-                              filled: true,
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "please enter your email";
+                            } else {
+                              return null;
+                            }
+                          },
+                          decoration: InputDecoration(
+                            hintText: "Enter your email",
+                            prefixIcon: const Icon(
+                              Icons.person,
+                              color: Color(0xffeb3254),
                             ),
+                            enabledBorder: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                              Radius.circular(5),
+                            )),
+                            focusedBorder: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            )),
+                            fillColor: Colors.grey.shade300,
+                            filled: true,
                           ),
                         ),
                       ),
                       const SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.symmetric(
                             horizontal: 10),
-                        child: SizedBox(
-                          height: 50,
-                          width: 400,
-                          child: TextFormField(
-                            obscureText: _isvisible,
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _isvisible = !_isvisible;
-                                    });
-                                  },
-                                  icon: _isvisible
-                                      ? const Icon(
-                                          Icons.visibility_off,
-                                          color: Color(0xffeb3254),
-                                        )
-                                      : const Icon(
-                                          Icons.visibility,
-                                          color: Color(0xffeb3254),
-                                        )),
-                              hintText: "Enter your passwod",
-                              prefixIcon: const Icon(
-                                Icons.security,
-                                color: Color(0xffeb3254),
-                              ),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                Radius.circular(5),
-                              )),
-                              focusedBorder: const OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                Radius.circular(10),
-                              )),
-                              fillColor: Colors.grey.shade300,
-                              filled: true,
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value!.contains(RegExp(r'[a-z]'))) {
+                              return "password must contain at least one lowercase";
+                            } else {
+                              return null;
+                            }
+                          },
+                          obscureText: _isvisible,
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _isvisible = !_isvisible;
+                                  });
+                                },
+                                icon: _isvisible
+                                    ? const Icon(
+                                        Icons.visibility_off,
+                                        color: Color(0xffeb3254),
+                                      )
+                                    : const Icon(
+                                        Icons.visibility,
+                                        color: Color(0xffeb3254),
+                                      )),
+                            hintText: "Enter your passwod",
+                            prefixIcon: const Icon(
+                              Icons.security,
+                              color: Color(0xffeb3254),
                             ),
+                            enabledBorder: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                              Radius.circular(5),
+                            )),
+                            focusedBorder: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            )),
+                            fillColor: Colors.grey.shade300,
+                            filled: true,
                           ),
                         ),
                       ),
@@ -186,10 +193,12 @@ class _SignInState extends State<SignIn> {
 
               GestureDetector(
                 onTap: () {
+                  vaildate();
+                  // goToNextPage();
+
                   setState(() {
                     _isLoading = !_isLoading;
                   });
-                  goToNextPage();
                 },
                 child: _isLoading
                     ? loadingWidget()
